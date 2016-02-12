@@ -8,3 +8,9 @@ RUN slackpkg -batch=on -default_answer=yes update && slackpkg -batch=on -default
 # Upgrading CA-certificates
 RUN slackpkg -batch=on -default_answer=yes install ca-certificates && ( cd /etc/ssl/certs; grep -v '^#' /etc/ca-certificates.conf | while read CERT; do ln -fsv /usr/share/ca-certificates/$CERT `basename ${CERT/.crt/.pem}`; ln -fsv /usr/share/ca-certificates/$CERT `openssl x509 -hash -noout -in /usr/share/ca-certificates/$CERT`.0; done )
 
+# Set default LANG to en_US.UTF-8
+echo export LANG=en_US.UTF-8 > /etc/profile.d/lang.sh
+echo export LC_COLLATE=C >> /etc/profile.d/lang.sh
+echo setenv LANG en_US.UTF-8 > /etc/profile.d/lang.csh
+echo setenv LC_COLLATE C >> /etc/profile.d/lang.csh
+
