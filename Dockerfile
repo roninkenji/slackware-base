@@ -1,7 +1,7 @@
-FROM vbatts/slackware-base:latest
+FROM vbatts/slackware-base:14.1
 MAINTAINER roninkenji
 
-RUN echo "http://ftp.osuosl.org/.2/slackware/slackware64-14.1/" >> /etc/slackpkg/mirrors
+RUN echo "http://slackware.mirrors.tds.net/pub/slackware/slackware64-14.2/" > /etc/slackpkg/mirrors
 RUN sed -i -e 's/^WGETFLAGS=.*/WGETFLAGS="--passive-ftp --no-verbose"/' /etc/slackpkg/slackpkg.conf
 RUN slackpkg -batch=on -default_answer=yes update && slackpkg -batch=on -default_answer=yes upgrade-all
 
