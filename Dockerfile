@@ -1,4 +1,4 @@
-FROM vbatts/slackware-base:current
+FROM vbatts/slackware-base:14.2
 MAINTAINER roninkenji
 
 RUN sed -i -e 's/^WGETFLAGS=.*/WGETFLAGS="--passive-ftp --no-verbose"/' /etc/slackpkg/slackpkg.conf
