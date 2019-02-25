@@ -2,6 +2,7 @@ FROM vbatts/slackware-base:current
 MAINTAINER roninkenji
 
 RUN sed -i -e 's/^WGETFLAGS=.*/WGETFLAGS="--passive-ftp --no-verbose"/' /etc/slackpkg/slackpkg.conf
+RUN touch /var/lib/slackpkg/current
 RUN slackpkg -batch=on -default_answer=yes update && slackpkg -batch=on -default_answer=yes upgrade-all
 
 # Upgrading CA-certificates
